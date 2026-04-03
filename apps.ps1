@@ -41,11 +41,11 @@ function Install-AppFromUrl {
     }
 
     $localPath = Join-Path $DownloadDir $FileName                                                                                        # Логика пути: если портативка, качаем сразу в место назначения
-    if ($IsPortable) { 
-        $localPath = $CheckPath 
+    if ($IsPortable) {
+        $localPath = $CheckPath
         $destDir   = Split-Path $localPath
         if (-not (Test-Path $destDir)) {
-            New-Item $destDir -Type Directory -Force | Out-Null 
+            New-Item $destDir -Type Directory -Force | Out-Null
         }
     }
 
@@ -116,7 +116,6 @@ $apps =                                                                         
     "Windscribe.Windscribe"                    # VPN
 )
 
-
 Write-Host "Начало установки приложений через WinGet"                                                                                    -ForegroundColor Cyan
 foreach ($app in $apps) {
     Write-Host "Устанавливаю: $app..."                                                                                                   -ForegroundColor Yellow
@@ -147,24 +146,23 @@ foreach ($app in $remoteApps)                                                   
 #     1.Устанавливаем компоненты SSMS Integration Pack - 
 #                                SQLPrompt             - intellisense (SSMS only, в Visual Studio не понадобится)
 #                                SQLSearch             - навигация 
-#                                SQLDependencyTracker  - аналог WiseCoders.DbSchema, кое-что умеет, но произв-ти нет. По желанию крч
+#                                SQLDependencyTracker  - аналог WiseCoders.DbSchema, кое-что умеет, но слабая произв-ть. По желанию крч
 #     2. Выключаем интернет, 
 #                  Windows Defender
 #     3. Включаем  SSMS 18.12.1, 
 #                  RedGate_SQL_ToolBelt_v3.1.0.2733\Keygens\RedGate Keygens\RePT\MultiKeyGen.exe
-#     4. В SSMS        SQLPrompt->Manage License -> Activate -> Activate Manually
+#     4. В SSMS        SQLPrompt -> Manage License -> Activate
 #     5. В MultiKeyGen Program Selection: Red-Gate SQL Compare
 #                      Edition Selection: Professional
 #                      Licensing Methods: any
 #                      Number of Users  : 1
-#                      Generate->Copy
-#     6. В SSMS        вставляем ключ -> копируем HTML слева
-#     7. В MultiKeyGen вставляем HTML -> копируем HTML справа
-#     8. В SSMS        вставляем HTML -> Activate                 
+#                      Generate -> Copy
+#     6. В SSMS        вставляем ключ -> Activate -> Activate manually -> копируем HTML слева
+#     7. В MultiKeyGen вставляем HTML слева  -> копируем HTML справа
+#     8. В SSMS        вставляем HTML справа -> Activate -> Close                 
 # 
 # Araxis Merge Professional Edition 2025.1 (x64)                                                                                         # лучший компаратор ever
 #     Всё просто - подменить ярлык    
-
 
 # Настройки приложений
 Write-Host "Добавление компонентов через vs_installer.exe" -ForegroundColor Cyan
@@ -191,7 +189,6 @@ $vsArgs = @(
 
 Start-Process "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe" -ArgumentList $vsArgs -Wait
 
-
 Write-Host "# Установка Araxis Merge в качестве компаратора Git"                                                                         -ForegroundColor Cyan
 Add-Type -AssemblyName System.Windows.Forms
 $FileBrowser             = New-Object System.Windows.Forms.OpenFileDialog                                                                # Инициализация выбора
@@ -217,7 +214,7 @@ if ($FileBrowser.ShowDialog() -eq 'OK') {
     git config --global diff.tool  ax                                                                                                    # Назначаем инструменты
     git config --global merge.tool ax                                                                                                    
                                                                                                                                          
-    $q = '\"'                                                                                                                            # Экранированные кавычки нужны, чтобы внутри .gitconfig путь к EXE-файлу был обернут в кавычки (безопасность)
+    $q = '\"'                                                                                                                            # Экранирование, чтобы внутри .gitconfig путь к EXE-файлу был обернут в кавычки (безопасность)
     $diffCmd  = "$q$araxisExe$q -2 -wait $q`$LOCAL$q $q`$REMOTE$q"                                                                       # Сборка команд
     $mergeCmd = "$q$araxisExe$q -3 -wait -merge $q`$LOCAL$q $q`$BASE$q $q`$REMOTE$q $q`$MERGED$q"                                        
                                                                                                                                          
