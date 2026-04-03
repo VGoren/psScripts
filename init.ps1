@@ -1,4 +1,5 @@
 # Кладем в .ps1 и запускаем. Самодокументация в Write-Host и комментах
+
 function New-Shortcut {                                                                               # Функция создания ярлыка с автоматическим подбором иконки из списка возможных путей
     param(
         [Parameter(Mandatory=$true)] [string]  $ShortcutPath,                                         # Полный путь к .lnk файлу
