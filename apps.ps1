@@ -109,8 +109,11 @@ $apps =                                                                         
     "Google.GoogleDrive"                       # Облачное хранилище
                                                        
     "FxSound.FxSound"                          # Усилитель звука
+    "VideoLAN.VLC"                             # Плеер
     "xanderfrangos.twinkletray"                # Диммер для мониторов
     "Skillbrains.Lightshot"                    # Скриншотер
+    "Ghisler.TotalCommander"                   # Проводник
+    "Eassos.DiskGenius"                        # Работа с дисками/разделами
                                                        
     "Proton.ProtonVPN"                         # VPN
     "Windscribe.Windscribe"                    # VPN
