@@ -111,13 +111,13 @@ $apps =                                                                         
     "FxSound.FxSound"                          # Усилитель звука
     "VideoLAN.VLC"                             # Плеер
     "xanderfrangos.twinkletray"                # Диммер для мониторов
+    "iTop.iTopEasyDesktop"                     # Организация рабочего стола (группировка иконок) как https://github.com/PinchToDebug/DeskFrame только лучше
     "Skillbrains.Lightshot"                    # Скриншотер
     "Ghisler.TotalCommander"                   # Проводник
     "Eassos.DiskGenius"                        # Работа с дисками/разделами
                                                        
     "Proton.ProtonVPN"                         # VPN
     "Windscribe.Windscribe"                    # VPN
-    "iTop.iTopEasyDesktop"                     # Организация рабочего стола (группировка иконок) как https://github.com/PinchToDebug/DeskFrame только лучше
 )
 
 Write-Host "Начало установки приложений через WinGet"                                                                                    -ForegroundColor Cyan
