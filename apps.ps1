@@ -117,6 +117,7 @@ $apps =                                                                         
                                                        
     "Proton.ProtonVPN"                         # VPN
     "Windscribe.Windscribe"                    # VPN
+    "iTop.iTopEasyDesktop"                     # Организация рабочего стола (группировка иконок) как https://github.com/PinchToDebug/DeskFrame только лучше
 )
 
 Write-Host "Начало установки приложений через WinGet"                                                                                    -ForegroundColor Cyan
