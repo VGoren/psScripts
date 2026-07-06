@@ -1,4 +1,4 @@
-# Кладем в .ps1 и запускаем. Самодокументация в Write-Host и комментах
+﻿# Кладем в .ps1 и запускаем. Самодокументация в Write-Host и комментах
 
 # Самовозвышение (запрос прав администратора)
 if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
@@ -89,35 +89,35 @@ function Install-AppFromUrl {
 
 $apps =                                                                                                                                  # Список приложений для установки, доступных в WinGet
 @(
-    "Microsoft.VisualStudio.2022.Professional" # IDE
-    "Google.AndroidStudio"                     # IDE
-    "Anysphere.Cursor"                         # AI IDE
-    "Google.Antigravity"                       # AI IDE
-
-    "WiseCoders.DbSchema"                      # SQL аналитика
-
-    "Notepad++.Notepad++"                      # Текстовый редактор
-
-    "Git.Git"                                  # Система контроля версий
-    "TortoiseSVN.TortoiseSVN"                  # Система контроля версий
-
-    "Docker.DockerDesktop"                     # Контейнеризация
-                                             
-    "Discord.Discord"                          # Мессенджер
-    "Rakuten.Viber"                            # Мессенджер
-                                                       
-    "Google.GoogleDrive"                       # Облачное хранилище
-                                                       
-    "FxSound.FxSound"                          # Усилитель звука
-    "VideoLAN.VLC"                             # Плеер
-    "xanderfrangos.twinkletray"                # Диммер для мониторов
-    "iTop.iTopEasyDesktop"                     # Организация рабочего стола (группировка иконок) как https://github.com/PinchToDebug/DeskFrame только лучше
-    "Skillbrains.Lightshot"                    # Скриншотер
-    "Ghisler.TotalCommander"                   # Проводник
-    "Eassos.DiskGenius"                        # Работа с дисками/разделами
-                                                       
-    "Proton.ProtonVPN"                         # VPN
-    "Windscribe.Windscribe"                    # VPN
+    "Microsoft.VisualStudio.2022.Community" # IDE
+    "Google.AndroidStudio"                  # IDE
+    "Anysphere.Cursor"                      # AI IDE
+    "Google.Antigravity"                    # AI IDE
+										    
+    "WiseCoders.DbSchema"                   # SQL аналитика
+										    
+    "Notepad++.Notepad++"                   # Текстовый редактор
+										    
+    "Git.Git"                               # Система контроля версий
+    "TortoiseSVN.TortoiseSVN"               # Система контроля версий
+										    
+    "Docker.DockerDesktop"                  # Контейнеризация
+                                            
+    "Discord.Discord"                       # Мессенджер
+    "Rakuten.Viber"                         # Мессенджер
+                                                    
+    "Google.GoogleDrive"                    # Облачное хранилище
+                                                    
+    "FxSound.FxSound"                       # Усилитель звука
+    "VideoLAN.VLC"                          # Плеер
+    "xanderfrangos.twinkletray"             # Диммер для мониторов
+    "iTop.iTopEasyDesktop"                  # Организация рабочего стола (группировка иконок) как https://github.com/PinchToDebug/DeskFrame только лучше
+    "Skillbrains.Lightshot"                 # Скриншотер
+    "Ghisler.TotalCommander"                # Проводник
+    "Eassos.DiskGenius"                     # Работа с дисками/разделами
+                                                    
+    "Proton.ProtonVPN"                      # VPN
+    "Windscribe.Windscribe"                 # VPN
 )
 
 Write-Host "Начало установки приложений через WinGet"                                                                                    -ForegroundColor Cyan
