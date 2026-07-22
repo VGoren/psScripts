@@ -89,13 +89,22 @@ function Install-AppFromUrl {
 
 $apps =                                                                                                                                  # Список приложений для установки, доступных в WinGet
 @(
+    "Google.Chrome.EXE"
+
     "Microsoft.VisualStudio.2022.Community" # IDE
     "Google.AndroidStudio"                  # IDE
     "Anysphere.Cursor"                      # AI IDE
     "Google.Antigravity"                    # AI IDE
+    "Google.AntigravityIDE"                 # AI IDE
 										    
     "WiseCoders.DbSchema"                   # SQL аналитика
-										    
+    "Microsoft.SQLServer.2019.Express"      # SQL Server 15
+    "PostgreSQL.PostgreSQL"                 # PostgreSQL
+    "PostgreSQL.pgAdmin"                    #
+    "DBeaver.DBeaver.Community"             # Универсальный SQL IDE
+
+    "ScooterSoftware.BeyondCompare.5"       # Компаратор (мощный, но на напробном периоде)
+
     "Notepad++.Notepad++"                   # Текстовый редактор
 										    
     "Git.Git"                               # Система контроля версий
@@ -110,8 +119,13 @@ $apps =                                                                         
                                                     
     "FxSound.FxSound"                       # Усилитель звука
     "VideoLAN.VLC"                          # Плеер
+    "RARLab.WinRAR"                         # Архиватор
+    "7zip.7zip"                             # Архиватор
+    "dotPDN.PaintDotNet"                    # Paint.NET
+
     "xanderfrangos.twinkletray"             # Диммер для мониторов
-    "iTop.iTopEasyDesktop"                  # Организация рабочего стола (группировка иконок) как https://github.com/PinchToDebug/DeskFrame только лучше
+    #"iTop.iTopEasyDesktop"                  # Организация рабочего стола (группировка иконок) как https://github.com/PinchToDebug/DeskFrame только лучше
+    "SoftwareOK.DesktopOK"                  # Организация рабочего стола (просто запоминает расположение ярлыков для каждого разрешения)
     "Skillbrains.Lightshot"                 # Скриншотер
     "Ghisler.TotalCommander"                # Проводник
     "Eassos.DiskGenius"                     # Работа с дисками/разделами
@@ -120,16 +134,37 @@ $apps =                                                                         
     "Windscribe.Windscribe"                 # VPN
 )
 
-Write-Host "Начало установки приложений через WinGet"                                                                                    -ForegroundColor Cyan
+Write-Host "Анализ системы..."                                                                                                -ForegroundColor Cyan
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$installed = winget list --accept-source-agreements | Out-String
+$lines = $installed -split "`r?`n"
+$exclude = "MSIX|Microsoft\.|SDK|Runtime|Framework|Redist|VCLibs|Extension|Driver|Update"
+Write-Host "Установлено вне списка `$apps (синхронизируй если нужно):" -ForegroundColor Red
+for ($i = 3; $i -lt $lines.Count; $i++) {
+    $parts = $lines[$i].Trim() -split "\s{2,}"
+    if ($parts.Count -ge 2) {
+        $name, $id = $parts[0].Trim(), $parts[1].Trim()
+        if ($apps -notcontains $id -and $id -notmatch $exclude -and $id -ne "ID") {
+            # Если ID похож на пакетный менеджер (есть точка и нет ARP/GUID) - Желтый, иначе Красный
+            $isPkg = ($id -match "\." -and $id -notmatch "^ARP" -and $id -notmatch "\{[0-9A-Fa-f-]{36}\}")
+            $color = if ($isPkg) { "Yellow" } else { "DarkRed" }
+            Write-Host "  - $name [$id]" -ForegroundColor $color
+        }
+    }
+}
+Write-Host "--------------------------------------------------" -ForegroundColor Gray
+Read-Host "Нажми Enter, чтобы начать установку/обновление..."
+
+Write-Host "Начало установки/обновления приложений через WinGet"                                                                       -ForegroundColor Cyan
 foreach ($app in $apps) {
-    Write-Host "Устанавливаю: $app..."                                                                                                   -ForegroundColor Yellow
+    Write-Host "Обработка: $app..."                                                                                                      -ForegroundColor Yellow
     
     winget install -e --id $app --accept-source-agreements --accept-package-agreements --silent
     
     if ($LASTEXITCODE -eq 0) {
         Write-Host "Успешно: $app"                                                                                                       -ForegroundColor Green
     } else {
-        Write-Host "Ошибка или уже установлено: $($app) (Код: $LASTEXITCODE)"                                                            -ForegroundColor Gray
+        Write-Host "Результат для $($app) (Код: $LASTEXITCODE)"                                                                         -ForegroundColor Gray
     }
 }
 Write-Host "Конец установки приложений через WinGet"                                                                                     -ForegroundColor Cyan
