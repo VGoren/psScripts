@@ -91,47 +91,62 @@ $apps =                                                                         
 @(
     "Google.Chrome.EXE"
 
-    "Microsoft.VisualStudio.2022.Community" # IDE
-    "Google.AndroidStudio"                  # IDE
-    "Anysphere.Cursor"                      # AI IDE
-    "Google.Antigravity"                    # AI IDE
-    "Google.AntigravityIDE"                 # AI IDE
-										    
-    "WiseCoders.DbSchema"                   # SQL аналитика
-    "Microsoft.SQLServer.2019.Express"      # SQL Server 15
-    "PostgreSQL.PostgreSQL"                 # PostgreSQL
-    "PostgreSQL.pgAdmin"                    #
-    "DBeaver.DBeaver.Community"             # Универсальный SQL IDE
+    # IDE
+    "Microsoft.VisualStudio.2022.Community"   # IDE
+    "Google.AndroidStudio"                    # IDE
+    "JetBrains.IntelliJIDEA.Community"        # IDE
+    "Microsoft.VisualStudioCode"              # IDE
 
-    "ScooterSoftware.BeyondCompare.5"       # Компаратор (мощный, но на напробном периоде)
+    # AI
+    "Ollama.Ollama"                           # AI Local
+    "Anysphere.Cursor"                        # IDE AI
+    "Google.Antigravity"                      # IDE AI
+    "Google.AntigravityIDE"                   # IDE AI
 
-    "Notepad++.Notepad++"                   # Текстовый редактор
-										    
-    "Git.Git"                               # Система контроля версий
-    "TortoiseSVN.TortoiseSVN"               # Система контроля версий
-										    
-    "Docker.DockerDesktop"                  # Контейнеризация
-                                            
-    "Discord.Discord"                       # Мессенджер
-    "Rakuten.Viber"                         # Мессенджер
-                                                    
-    "Google.GoogleDrive"                    # Облачное хранилище
-                                                    
-    "FxSound.FxSound"                       # Усилитель звука
-    "VideoLAN.VLC"                          # Плеер
-    "RARLab.WinRAR"                         # Архиватор
-    "7zip.7zip"                             # Архиватор
-    "dotPDN.PaintDotNet"                    # Paint.NET
+    # SQL
+    "WiseCoders.DbSchema"                     # SQL аналитика
+    "Microsoft.SQLServer.2019.Express"        # SQL Server 15
+    "PostgreSQL.PostgreSQL"                   # PostgreSQL
+    "PostgreSQL.pgAdmin"                      # SQL IDE
+    "DBeaver.DBeaver.Community"               # SQL IDE Универсальный
 
-    "xanderfrangos.twinkletray"             # Диммер для мониторов
-    #"iTop.iTopEasyDesktop"                  # Организация рабочего стола (группировка иконок) как https://github.com/PinchToDebug/DeskFrame только лучше
-    "SoftwareOK.DesktopOK"                  # Организация рабочего стола (просто запоминает расположение ярлыков для каждого разрешения)
-    "Skillbrains.Lightshot"                 # Скриншотер
-    "Ghisler.TotalCommander"                # Проводник
-    "Eassos.DiskGenius"                     # Работа с дисками/разделами
-                                                    
-    "Proton.ProtonVPN"                      # VPN
-    "Windscribe.Windscribe"                 # VPN
+    # Компараторы
+    "ScooterSoftware.BeyondCompare.5"         # Компаратор (мощный, но на напробном периоде)
+
+    # Системы контроля версий
+    "Git.Git"                                 #
+    "TortoiseSVN.TortoiseSVN"                 #
+
+    # На всякий случай
+    "Docker.DockerDesktop"                    # Контейнеризация
+    "OpenJS.NodeJS"                           #
+    "Python.Launcher"                         #
+    "LocalSend.LocalSend"                     # Легкая передача в локалке
+    "MoonlightGameStreamingProject.Moonlight" # RDP с графикой
+    "Oracle.VirtualBox"                       # Работа с VM
+
+    # Communication
+    "Discord.Discord"                         # Мессенджер
+    "Rakuten.Viber"                           # Мессенджер
+
+    # Системные
+    "Notepad++.Notepad++"                     # Текстовый редактор
+    "Google.GoogleDrive"                      # Облачное хранилище
+    "FxSound.FxSound"                         # Усилитель звука
+    "VideoLAN.VLC"                            # Плеер
+    "RARLab.WinRAR"                           # Архиватор
+    "7zip.7zip"                               # Архиватор
+    "dotPDN.PaintDotNet"                      # Paint.NET
+    "Eassos.DiskGenius"                       # Работа с дисками/разделами
+    "Ghisler.TotalCommander"                  # Проводник
+    "xanderfrangos.twinkletray"               # Диммер для мониторов
+    "Skillbrains.Lightshot"                   # Скриншотер
+    "SoftwareOK.DesktopOK"                    # Организация рабочего стола (просто запоминает расположение ярлыков для каждого разрешения)
+    #"iTop.iTopEasyDesktop"                    # Организация рабочего стола (группировка иконок) как https://github.com/PinchToDebug/DeskFrame только лучше
+
+    # VPN
+    "Proton.ProtonVPN"                        # VPN
+    "Windscribe.Windscribe"                   # VPN
 )
 
 Write-Host "Анализ системы..."                                                                                                -ForegroundColor Cyan
