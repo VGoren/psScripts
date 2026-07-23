@@ -111,7 +111,7 @@ $apps =                                                                         
     "DBeaver.DBeaver.Community"               # SQL IDE Универсальный
 
     # Компараторы
-    "ScooterSoftware.BeyondCompare.5"         # Компаратор (мощный, но на напробном периоде)
+    "ScooterSoftware.BeyondCompare.5"         # Компаратор (мощный, но на пробном периоде)
 
     # Системы контроля версий
     "Git.Git"                                 #
@@ -149,12 +149,12 @@ $apps =                                                                         
     "Windscribe.Windscribe"                   # VPN
 )
 
-Write-Host "Анализ системы..."                                                                                                -ForegroundColor Cyan
+Write-Host "Анализ системы..."                                                                                                           -ForegroundColor Cyan
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $installed = winget list --accept-source-agreements | Out-String
-$lines = $installed -split "`r?`n"
-$exclude = "MSIX|Microsoft\.|SDK|Runtime|Framework|Redist|VCLibs|Extension|Driver|Update"
-Write-Host "Установлено вне списка `$apps (синхронизируй если нужно):" -ForegroundColor Red
+$lines     = $installed -split "`r?`n"
+$exclude   = "MSIX|Microsoft\.|SDK|Runtime|Framework|Redist|VCLibs|Extension|Driver|Update"
+Write-Host "Установлено вне списка `$apps (синхронизируй если нужно):"                                                                   -ForegroundColor Red
 for ($i = 3; $i -lt $lines.Count; $i++) {
     $parts = $lines[$i].Trim() -split "\s{2,}"
     if ($parts.Count -ge 2) {
@@ -163,14 +163,14 @@ for ($i = 3; $i -lt $lines.Count; $i++) {
             # Если ID похож на пакетный менеджер (есть точка и нет ARP/GUID) - Желтый, иначе Красный
             $isPkg = ($id -match "\." -and $id -notmatch "^ARP" -and $id -notmatch "\{[0-9A-Fa-f-]{36}\}")
             $color = if ($isPkg) { "Yellow" } else { "DarkRed" }
-            Write-Host "  - $name [$id]" -ForegroundColor $color
+            Write-Host "  - $name [$id]"                                                                                                 -ForegroundColor $color
         }
     }
 }
-Write-Host "--------------------------------------------------" -ForegroundColor Gray
+Write-Host "--------------------------------------------------"                                                                          -ForegroundColor Gray
 Read-Host "Нажми Enter, чтобы начать установку/обновление..."
 
-Write-Host "Начало установки/обновления приложений через WinGet"                                                                       -ForegroundColor Cyan
+Write-Host "Начало установки/обновления приложений через WinGet"                                                                         -ForegroundColor Cyan
 foreach ($app in $apps) {
     Write-Host "Обработка: $app..."                                                                                                      -ForegroundColor Yellow
     
@@ -179,7 +179,7 @@ foreach ($app in $apps) {
     if ($LASTEXITCODE -eq 0) {
         Write-Host "Успешно: $app"                                                                                                       -ForegroundColor Green
     } else {
-        Write-Host "Результат для $($app) (Код: $LASTEXITCODE)"                                                                         -ForegroundColor Gray
+        Write-Host "Результат для $($app) (Код: $LASTEXITCODE)"                                                                          -ForegroundColor Gray
     }
 }
 Write-Host "Конец установки приложений через WinGet"                                                                                     -ForegroundColor Cyan
@@ -219,7 +219,7 @@ foreach ($app in $remoteApps)                                                   
 #     Всё просто - подменить ярлык    
 
 # Настройки приложений
-Write-Host "Добавление компонентов через vs_installer.exe" -ForegroundColor Cyan
+Write-Host "Добавление компонентов через vs_installer.exe"                                                                               -ForegroundColor Cyan
 $vsArgs = @(
     'modify',
     '--installPath', '"C:\Program Files\Microsoft Visual Studio\2022\Professional"',
