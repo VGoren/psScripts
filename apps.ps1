@@ -115,6 +115,7 @@ $apps =                                                                         
 
     # Системы контроля версий
     "Git.Git"                                 #
+    "GitExtensionsTeam.GitExtensions"         #
     "TortoiseSVN.TortoiseSVN"                 #
 
     # На всякий случай
