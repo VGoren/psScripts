@@ -220,29 +220,6 @@ foreach ($app in $remoteApps)                                                   
 #     Всё просто - подменить ярлык    
 
 # Настройки приложений
-Write-Host "Добавление компонентов через vs_installer.exe"                                                                               -ForegroundColor Cyan
-$vsArgs = @(
-    'modify',
-    '--installPath', '"C:\Program Files\Microsoft Visual Studio\2022\Professional"',
-    '--add',                           'Microsoft.VisualStudio.Workload.NativeDesktop',
-    '--add',                           'Microsoft.VisualStudio.Workload.Data',
-    '--add',                           'Microsoft.Net.Component.4.8.1.SDK',
-    '--add',                           'Microsoft.Net.Component.4.8.1.TargetingPack',
-    '--add',                           'Microsoft.Net.Component.4.8.TargetingPack',
-    '--add',                           'Microsoft.VisualStudio.Component.VC.14.29.16.11.x86.x64',
-    '--add',                           'Microsoft.VisualStudio.Component.VC.14.29.16.11.Spectre',                                        # .x86.x64 по умолчанию
-    '--add',                           'Microsoft.VisualStudio.Component.VC.14.29.16.11.ATL',                                            # .x86.x64 по умолчанию
-    '--add',                           'Microsoft.VisualStudio.Component.VC.14.29.16.11.ATL.Spectre',                                    # .x86.x64 по умолчанию
-    '--add',                           'Microsoft.VisualStudio.Component.VC.14.29.16.11.MFC',                                            # .x86.x64 по умолчанию
-    '--add',                           'Microsoft.VisualStudio.Component.VC.14.29.16.11.MFC.Spectre',                                    # .x86.x64 по умолчанию
-    '--add',                           'Microsoft.VisualStudio.Component.VC.14.29.16.11.CLI.Support',
-    '--addProductLang', 'En-us',
-    '--includeRecommended',
-    '--passive',
-    '--norestart'
-)
-
-Start-Process "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe" -ArgumentList $vsArgs -Wait
 
 Write-Host "# Установка Araxis Merge в качестве компаратора Git"                                                                         -ForegroundColor Cyan
 Add-Type -AssemblyName System.Windows.Forms
